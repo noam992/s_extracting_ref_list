@@ -3,7 +3,7 @@ import requests
 import json
 import boto3
 
-# Define env parameters / values
+# Define env parameters / values.
 # first hard coded. later move to env parameter in AWS configuration
 sqs_arn = "https://sqs.us-east-1.amazonaws.com/578409035468/sqs-matomo-message"
 site_list = ["https://www.jamesallen.com/loose-diamonds/oval-cut/"] # Adding any site you want to extract images/data on diamond
