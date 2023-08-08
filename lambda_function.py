@@ -44,12 +44,12 @@ def lambda_handler(event, context):
                 if ref.has_attr('href'):  # Check if the tag has an 'href' attribute
                     href = ref['href']
                     if not href.endswith(('.css', '.png', '/')):  # Skip if the link ends with .css or .png or /
-                        print("href: ", href)
-                        # # Appropriate conditions for specific sites
-                        # if (site.__contains__('www.jamesallen.com')) & (not href.startswith(('https://www.jamesallen.com'))):
-                        #     href = 'https://www.jamesallen.com/' + href
-                        #     sanding_sqs_massage(href)  # sending url using sqs
-                        # else:
-                        #     sanding_sqs_massage(href)  # sending url using sqs
+
+                        # Appropriate conditions for specific sites
+                        if (site.__contains__('www.jamesallen.com')) & (not href.startswith(('https://www.jamesallen.com'))):
+                            href = 'https://www.jamesallen.com/' + href
+                            sanding_sqs_massage(href)  # sending url using sqs
+                        else:
+                            sanding_sqs_massage(href)  # sending url using sqs
     except:
         pass
