@@ -5,7 +5,7 @@ import boto3
 
 # Define env parameters / values
 # first hard coded. later move to env parameter in AWS configuration
-sqs_arn = "https://sqs.us-east-1.amazonaws.com/578409035468/sqs-matomo-message"
+sqs_arn = "arn:aws:sqs:us-east-1:682766493838:sqs_invoking_web_scraping_fnc"
 site_list = ["https://www.jamesallen.com/loose-diamonds/oval-cut/"] # Adding any site you want to extract images/data on diamond
 
 
@@ -26,7 +26,7 @@ def sanding_sqs_massage(message):
 
 
 # extract relevant content from HTML
-def lambda_handler():
+def lambda_handler(event, context):
 
     try:
         for site in site_list:
@@ -44,12 +44,12 @@ def lambda_handler():
                 if ref.has_attr('href'):  # Check if the tag has an 'href' attribute
                     href = ref['href']
                     if not href.endswith(('.css', '.png', '/')):  # Skip if the link ends with .css or .png or /
-
-                        # Appropriate conditions for specific sites
-                        if (site.__contains__('www.jamesallen.com')) & (not href.startswith(('https://www.jamesallen.com'))):
-                            href = 'https://www.jamesallen.com/' + href
-                            sanding_sqs_massage(href)  # sending url using sqs
-                        else:
-                            sanding_sqs_massage(href)  # sending url using sqs
+                        print("href: ", href)
+                        # # Appropriate conditions for specific sites
+                        # if (site.__contains__('www.jamesallen.com')) & (not href.startswith(('https://www.jamesallen.com'))):
+                        #     href = 'https://www.jamesallen.com/' + href
+                        #     sanding_sqs_massage(href)  # sending url using sqs
+                        # else:
+                        #     sanding_sqs_massage(href)  # sending url using sqs
     except:
         pass
