@@ -5,7 +5,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
-from urllib3.util.ssl_ import DEFAULT_CIPHERS
 import json
 
 # Define env parameters / values
@@ -34,11 +33,12 @@ def sanding_sqs_massage(message):
 def lambda_handler(event, context):
     try:
         chrome_options = Options()
+        driver_path = '/usr/local/bin/chromedriver'
         chrome_options.add_argument("--headless")
 
         for site in site_list:
 
-            driver = webdriver.Chrome(options=chrome_options)
+            driver = webdriver.Chrome(driver_path, options=chrome_options)
             driver.get(site)
 
             ref_list = []  # REF LIST for specific site
