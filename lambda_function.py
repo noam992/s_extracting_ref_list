@@ -40,7 +40,7 @@ def lambda_handler(event, context):
 
         for site in site_list:
 
-            driver = webdriver.Chrome(driver_path, options=chrome_options)
+            driver = webdriver.Chrome(executable_path=driver_path, options=chrome_options)
             driver.get(site)
 
             ref_list = []  # REF LIST for specific site
