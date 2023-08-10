@@ -32,8 +32,10 @@ def sanding_sqs_massage(message):
 # extract relevant content from HTML
 def lambda_handler(event, context):
     try:
-        chrome_options = Options()
+
         driver_path = '/usr/local/bin/chromedriver'
+
+        chrome_options = Options()
         chrome_options.add_argument("--headless")
 
         for site in site_list:
