@@ -4,6 +4,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.service import Service
 import time
 import json
 import os
@@ -42,7 +43,8 @@ def lambda_handler(event, context):
 
         for site in site_list:
 
-            driver = webdriver.Chrome(driver_path, options=chrome_options)
+            service = Service(driver_path)
+            driver = webdriver.Chrome(service=service, options=chrome_options)
             driver.get(site)
 
             ref_list = []  # REF LIST for specific site
