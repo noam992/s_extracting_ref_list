@@ -4,9 +4,9 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.chrome.service import Service
 import time
 import json
+import os
 
 # Define env parameters / values
 # first hard coded. later move to env parameter in AWS configuration
@@ -34,15 +34,15 @@ def sanding_sqs_massage(message):
 def lambda_handler(event, context):
     try:
 
-        driver_path = '/usr/local/bin/chromedriver'
+        current_directory = os.path.dirname(os.path.abspath(__file__))
+        driver_path = os.path.join(current_directory, 'chromedriver')
 
         chrome_options = Options()
         chrome_options.add_argument("--headless")
 
         for site in site_list:
 
-            service = Service(driver_path)
-            driver = webdriver.Chrome(service=service, options=chrome_options)
+            driver = webdriver.Chrome(driver_path, options=chrome_options)
             driver.get(site)
 
             ref_list = []  # REF LIST for specific site
