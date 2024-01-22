@@ -1,14 +1,11 @@
 # web-scraping-href-extraction
+This repository contains code for web scraping using Selenium to extract a list of Href (hyperlinks). The technology stack includes AWS Lambda Function, AWS CodeBuild, and the Selenium library for web scraping.
 
 ## Technology
 
 - AWS Lambda Function
 - AWS CodeBuild
 - Selenium library for Web Scraping
-
-## Overview
-
-This repository contains code for web scraping using Selenium to extract a list of Href (hyperlinks). The technology stack includes AWS Lambda Function, AWS CodeBuild, and the Selenium library for web scraping.
 
 ### AWS Lambda Function
 
