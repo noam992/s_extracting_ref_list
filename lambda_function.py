@@ -11,7 +11,7 @@ import os
 
 # Define env parameters / values
 # first hard coded. later move to env parameter in AWS configuration
-sqs_arn = "arn:aws:sqs:us-east-1:682766493838:sqs_invoking_web_scraping_fnc"
+sqs_arn = "<insert sqs arn>"
 site_list = ["https://www.jamesallen.com/loose-diamonds/oval-cut/"] # Adding any site you want to extract images/data on diamond
 
 
